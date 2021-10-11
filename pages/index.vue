@@ -1,7 +1,7 @@
 <template>
   <div>
     <the-header></the-header>
-    <div class="flex">
+    <div class="flex" v-if="store.getters.getIsLogined">
       <base-comment></base-comment>
     </div>
   </div>
