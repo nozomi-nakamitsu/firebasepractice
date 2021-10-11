@@ -14,8 +14,8 @@ if (!firebase.apps.length) {
     .auth()
     .setPersistence(firebase.auth.Auth.Persistence.SESSION)
     .then(() => {
-      console.log("Initialized!"); // 確認用のメッセージ
+      console.log("Initialized!"); 
     });
 }
-
+export const firestore = firebase.firestore();
 export default firebase;
