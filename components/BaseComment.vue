@@ -40,6 +40,7 @@ import {
 import { firestore } from "../plugins/firebase.js";
 import firebase from "firebase";
 import BaseCommentItem from "./BaseCommentItem.vue";
+import { v4 as uuidv4 } from "uuid";
 
 export default defineComponent({
   components: {
@@ -67,24 +68,28 @@ export default defineComponent({
 
     // メッセージを送信する
     const sendMessage = async () => {
-      // const id = await firestore.collection("messages").doc().id;
+      const id = uuidv4();
+      const createdAt = firebase.firestore.Timestamp.fromDate(new Date());
       const messageInfo = {
-        uid: currentUser.uid,
+        createdAt: createdAt,
         displayName: currentUser.displayName,
-        text: text.value,
-        createdAt: Date.now(),
-        id: id
+        uid: currentUser.uid,
+        id: id,
+        text: text.value
       };
-
-      // await firebase
-      //   .firestore()
-      //   .collection("messages")
-      //   .doc(id)
-      //   .set(messageInfo);
-      text.value = "";
-      const element = document.querySelector(".main");
-      if (element) {
-        element.scrollTop = element.scrollHeight;
+      try {
+        // await firebase
+        //   .firestore()
+        //   .collection("messages")
+        //   .doc(id)
+        //   .set(messageInfo);
+        // text.value = "";
+        // const element = document.querySelector(".main");
+        // if (element) {
+        //   element.scrollTop = element.scrollHeight;
+        // }
+      } catch (error) {
+        alert("errorです", error);
       }
     };
 

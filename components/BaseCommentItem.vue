@@ -23,7 +23,6 @@
         {{ formatDateToSlashWithTime(message.createdAt) }}
       </p>
     </div>
-
   </div>
 </template>
 <script lang="ts">
@@ -43,7 +42,8 @@ export default defineComponent({
   },
   setup() {
     const formatDateToSlashWithTime = date => {
-      return dayjs(date).format("YYYY/MM/DD　HH:mm");
+      const target = date.toDate();
+      return dayjs(target).format("YYYY/MM/DD　HH:mm");
     };
     return {
       formatDateToSlashWithTime
