@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="base-comment-container">
-      <div class="header">Chat</div>
+      <div class="header">Chat!!!!!</div>
       <div class="main">
         <div
           v-for="(msg, index) in messages"
